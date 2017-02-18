@@ -1,2 +1,2 @@
 # fraserhacking
-Hacking the fraser.
+Fraser Hacks hackathon project.
