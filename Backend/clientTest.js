@@ -9,4 +9,6 @@ socket.on('connect', function () { // TIP: you can avoid listening on `connect` 
     socket.emit('helloWorld', 'connect', function (data) {
       console.log(data); // data will be 'woot'
     });
+    socket.emit('gitSync');
+    socket.emit('fileUpdate', 'usernameTest something');
   });
