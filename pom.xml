@@ -59,4 +59,12 @@
         </plugins>
     </build>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.socket</groupId>
+            <artifactId>socket.io-client</artifactId>
+            <version>0.8.3</version>
+        </dependency>
+    </dependencies>
+
 </project>
