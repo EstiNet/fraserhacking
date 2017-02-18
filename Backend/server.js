@@ -43,6 +43,9 @@ io.on('connection', function (socket) {
     console.log("The file was saved!");
     }); 
   });
+  socket.on('delete', function (data, fn) {
+    fs.unlink("C:\\GitRTC\\test\\" + data);
+  });
   socket.on('gitSync', function (data, fn) {
     //Sync with git!
     var spawn = require('child_process').spawn,
