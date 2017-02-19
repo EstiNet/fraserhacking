@@ -4,6 +4,7 @@
 * Built during the Fraser Hacks Hackathon
 */
 //Main backend server!
+//GitRTC Backend System 1.0
 console.log('Starting GitRTC backend server...');
 var io = require('socket.io')(80);
 var fs = require('fs');
@@ -31,10 +32,10 @@ io.on('connection', function (socket) {
   socket.on('changedir', function (data, fn) {
     fileCacheDir[socket.id] = data;
     fn('OK');
-    socket.broadcast.send('changedir', data);
+    socket.broadcast.emit('changedir', data);
   });
   socket.on('changefile', function (data, fn) {
-    socket.broadcast.send('changefile', data);
+    socket.broadcast.emit('changefile', data);
     fs.writeFile("C:\\GitRTC\\test\\" + fileCacheDir[socket.id], data, function(err) {
     if(err) {
         return console.log(err);

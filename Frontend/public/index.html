@@ -32,7 +32,44 @@
         left: 0;
     }
 </style>
+<script src="/dist/socket.io.js"></script>
+<script>
+  var socket = io('http://'+ document.location.hostname +':80');
+  var textCache;
+  socket.on('connect', function(){
+      
+      socket.emit('hello', 'THISISTHEWEBCLIENT!!!!!!', function(data, fn){
+           // document.getElementById('editor').innerHTML += data;
+           textCache = editor.getValue();
+      });
+  });
+  socket.on('event', function(data){});
+  socket.on('disconnect', function(){});
+  socket.on('changefile', function(data, fn){
+      console.log('Changing file!');
+      var currCursorRow = editor.selection.getCursor().row;
+      var currCursorCol = editor.selection.getCursor().column;
+    editor.setValue(data, currCursorRow + 1);
+    editor.clearSelection();
+    editor.gotoLine(currCursorRow + 1, currCursorCol)
 
+  });
+
+        $(document).on("keydown", function (e) {
+            
+        });
+        document.onkeydown = function() {
+            socket.emit('changedir', 'text.txt', function(data){
+
+            });
+            socket.emit('changefile', editor.getValue());
+            textCache = editor.getValue();
+        };
+            
+
+      
+
+</script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,26 +92,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Test1</a>
+                    <a href="#">main.java</a>
                 </li>
-                <li>
-                    <a href="#">Test2</a>
-                </li>
-                <li>
-                    <a href="#">Test3</a>
-                </li>
-                <li>
-                    <a href="#">Test4</a>
-                </li>
-                <li>
-                    <a href="#">Test5</a>
-                </li>
-                <li>
-                    <a href="#">Test6</a>
-                </li>
-                <li>
-                    <a href="#">Test7</a>
-                </li>
+
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -103,8 +123,8 @@
     <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/xcode");
-        editor.getSession().setMode("ace/mode/javascript");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/c_cpp");
     </script>
 
 
