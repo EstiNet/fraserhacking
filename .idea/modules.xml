@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GitRTC/GitRTC.iml" filepath="$PROJECT_DIR$/GitRTC/GitRTC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fraserhacking.iml" filepath="$PROJECT_DIR$/fraserhacking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Desktop.iml" filepath="$PROJECT_DIR$/Desktop.iml" />
     </modules>
   </component>
 </project>
